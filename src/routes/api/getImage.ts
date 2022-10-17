@@ -5,16 +5,16 @@ import sharp from "sharp";
 import { validation } from "../../middleware/validation";
 import scaleAndSaveImage from "../../utils/scaleImage";
 
-const getImageRoute = Router();
+const getImageRoute: Router = Router();
 
 getImageRoute.get('/getImage', validation, async (req: Request, res: Response) => {
     // Get [fileName]
     // We are sure that THERE IS a fileName because
     // the validation middleware took care of it
-    const fileName = String(req.query.fileName);
+    const fileName: string = String(req.query.fileName);
 
     // Check if the required image does not exists
-    let originalImagePath: string = path.join(
+    const originalImagePath: string = path.join(
         __dirname,
         '../../../assets/images',
         `${fileName}.jpg`

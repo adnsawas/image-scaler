@@ -1,7 +1,7 @@
 import { Request, Response, Router } from 'express';
 import getImageRoute from './api/getImage';
 
-const routes = Router();
+const routes: Router = Router();
 
 routes.use('/api', getImageRoute);
 
