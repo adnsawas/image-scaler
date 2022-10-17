@@ -20,23 +20,25 @@ const request = (0, supertest_1.default)(__1.default);
 describe('Testing getImage API', () => {
     it('fetches original image without scaling', () => __awaiter(void 0, void 0, void 0, function* () {
         yield request.get('/api/getImage?fileName=pikachu').expect(200);
-        let isFileSaved = fs_1.default.existsSync(path_1.default.join(__dirname, '../../assets/images/pikachu.jpg'));
+        const isFileSaved = fs_1.default.existsSync(path_1.default.join(__dirname, '../../assets/images/pikachu.jpg'));
         expect(isFileSaved).toEqual(true);
     }));
     it('fetches original image with scaling height only', () => __awaiter(void 0, void 0, void 0, function* () {
         yield request.get('/api/getImage?fileName=pikachu&height=200').expect(200);
         // Get check if new image has been created
-        let isFileSaved = fs_1.default.existsSync(path_1.default.join(__dirname, '../../assets/images/pikachu_h_200.jpg'));
+        const isFileSaved = fs_1.default.existsSync(path_1.default.join(__dirname, '../../assets/images/pikachu_h_200.jpg'));
         expect(isFileSaved).toEqual(true);
     }));
     it('fetches original image with scaling width only', () => __awaiter(void 0, void 0, void 0, function* () {
         yield request.get('/api/getImage?fileName=pikachu&width=200').expect(200);
-        let isFileSaved = fs_1.default.existsSync(path_1.default.join(__dirname, '../../assets/images/pikachu_w_200.jpg'));
+        const isFileSaved = fs_1.default.existsSync(path_1.default.join(__dirname, '../../assets/images/pikachu_w_200.jpg'));
         expect(isFileSaved).toEqual(true);
     }));
     it('fetches original image with scaling height and width', () => __awaiter(void 0, void 0, void 0, function* () {
-        yield request.get('/api/getImage?fileName=pikachu&height=200&width=200').expect(200);
-        let isFileSaved = fs_1.default.existsSync(path_1.default.join(__dirname, '../../assets/images/pikachu_h_200_w_200.jpg'));
+        yield request
+            .get('/api/getImage?fileName=pikachu&height=200&width=200')
+            .expect(200);
+        const isFileSaved = fs_1.default.existsSync(path_1.default.join(__dirname, '../../assets/images/pikachu_h_200_w_200.jpg'));
         expect(isFileSaved).toEqual(true);
     }));
 });

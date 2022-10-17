@@ -24,7 +24,7 @@ getImageRoute.get('/getImage', validation_1.validation, (req, res) => __awaiter(
     // the validation middleware took care of it
     const fileName = String(req.query.fileName);
     // Check if the required image does not exists
-    let originalImagePath = path_1.default.join(__dirname, '../../../assets/images', `${fileName}.jpg`);
+    const originalImagePath = path_1.default.join(__dirname, '../../../assets/images', `${fileName}.jpg`);
     if (!fs_1.default.existsSync(originalImagePath)) {
         // If the origianl image does not exist, we return 404 error
         return res.status(404).send('Image not found');
